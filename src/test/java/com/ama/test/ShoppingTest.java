@@ -1,12 +1,10 @@
-package tests;
+package com.ama.test;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
+import com.ama.pages.*;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import model.Product;
 import org.testng.annotations.Test;
-import pages.*;
 
 import java.util.Random;
 
