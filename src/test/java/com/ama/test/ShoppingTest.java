@@ -46,8 +46,10 @@ public class ShoppingTest extends BaseTest {
         test.log(Status.PASS, "search an item");
     }
 
-    @Test(priority = 2, description = "Check product page")
+    @Test(priority = 2, description = "product page")
     public void checkProductPage() {
+        test = extentReports.createTest("product page");
+        test.log(Status.INFO,"Test started - product page");
         searchPage = new SearchPage(driver);
         Random random = new Random();
         Product searchProduct = searchPage.selectAnItem(random.nextInt(searchPage.getTotalNumberSearchResults()));

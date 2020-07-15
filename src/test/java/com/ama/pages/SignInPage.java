@@ -32,12 +32,6 @@ public class SignInPage extends BasePage{
     }
 
     public void signIn(String userName, String password) {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        email.click();
         email.clear();
         email.sendKeys(userName);
         continueButton.click();

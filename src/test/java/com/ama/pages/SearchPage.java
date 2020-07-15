@@ -34,10 +34,11 @@ public class SearchPage extends BasePage{
         Product product = new Product();
         WebElement ele = searchItem.get(index);
         product.setTitle(ele.findElement(By.id("com.amazon.mShop.android.shopping:id/item_title")).getText());
-        String price = ele.findElement(By.xpath("./android.view.ViewGroup[@resource-id='com.amazon.mShop.android.shopping:id/rs_results_styled_price_v2']/android.widget.TextView")).getText();
+        String price = ele.findElement(By.xpath("//android.view.ViewGroup[@resource-id='com.amazon.mShop.android.shopping:id/rs_results_styled_price_v2']/android.widget.TextView")).getText();
         logger.info("Title of the product to select: " + product.getTitle());
+        logger.info("Price of the product before parsing: " + price);
+        product.setAmount(Integer.parseInt(price.split(" ")[0].replaceAll("[^\\d.]","")));
         logger.info("Price of the product to select: " + product.getAmount());
-        product.setAmount(Integer.parseInt(price.replaceAll("[^\\d.]", "")));
         ele.click();
         return product;
     }

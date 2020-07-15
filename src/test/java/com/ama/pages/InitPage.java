@@ -32,13 +32,7 @@ public class InitPage extends BasePage{
     }
     public void selectAlreadyMember() {
         alreadyMember.click();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Set<String> contexts = driver.getContextHandles();
-
         for (String context : contexts) {
             logger.info(contexts);
             if (!context.equals("NATIVE_APP")) {
