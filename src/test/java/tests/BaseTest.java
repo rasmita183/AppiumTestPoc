@@ -13,9 +13,9 @@ import org.testng.annotations.BeforeClass;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BaseTest {
+public class BaseTest extends ExtentReportAppium {
 
-    AndroidDriver driver;
+    AndroidDriver<MobileElement> driver;
 
     @BeforeClass
     public void setUp() {
@@ -23,13 +23,7 @@ public class BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.APP, "/Users/rasmi/Downloads/Amazon_shopping.apk");
         capabilities.setCapability(MobileCapabilityType.UDID, "8ADY0JDW1");
-//            capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
-//            capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_ACTIVITY, "com.amazon.mShop.android.shopping.MainActivity");
-//            capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.amazon.mShop.android.shopping");
-//            capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
-
-
-            driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 //            driver.installApp("/Users/rasmi/Downloads/Amazon_shopping.apk");
             driver.launchApp();
         } catch (MalformedURLException e) {
