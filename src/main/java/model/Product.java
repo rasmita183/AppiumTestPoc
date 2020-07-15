@@ -3,16 +3,16 @@ package model;
 public class Product {
 
 
-    String productTitle;
+    String title;
 
     Integer amount;
 
-    public String getProductTitle() {
-        return productTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getAmount() {

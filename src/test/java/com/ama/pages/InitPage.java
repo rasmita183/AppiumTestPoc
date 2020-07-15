@@ -3,6 +3,8 @@ package com.ama.pages;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,6 +14,7 @@ import java.util.Set;
 
 public class InitPage extends BasePage{
 
+    private static final Logger logger = LogManager.getLogger(InitPage.class);
 //    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Skip sign in\")")
     @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/skip_sign_in_button")
     private WebElement skipSignIn;
@@ -37,7 +40,7 @@ public class InitPage extends BasePage{
         Set<String> contexts = driver.getContextHandles();
 
         for (String context : contexts) {
-            System.out.println(contexts);
+            logger.info(contexts);
             if (!context.equals("NATIVE_APP")) {
                 driver.context(context);
                 break;

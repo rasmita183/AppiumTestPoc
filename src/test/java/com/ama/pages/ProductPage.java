@@ -5,6 +5,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import model.Product;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,10 +14,12 @@ import java.time.Duration;
 
 public class ProductPage extends BasePage{
 
-    @AndroidFindBy(id = "titleExpanderContent")
+    private static final Logger logger = LogManager.getLogger(ProductPage.class);
+
+    @AndroidFindBy(xpath = "//android.webkit.WebView//android.view.View[contains(text(), '65 inch')]")
     private WebElement productTitle;
 
-    @AndroidFindBy(id = "atfRedesign_priceblock_priceToPay")
+    @AndroidFindBy(xpath = "//android.webkit.WebView//android.widget.EditText[contains(text(), 'rupee')]")
     private WebElement price;
 
     @AndroidFindBy(className = "android.webkit.WebView")
@@ -34,10 +38,10 @@ public class ProductPage extends BasePage{
      * @return Product details with title and price
      */
     public Product getSelectedProductDetails() {
-        System.out.println(productsDetails.getText());
+        logger.info(productsDetails.getText());
         Product product = new Product();
         product.setAmount(Integer.parseInt(price.getText().replaceAll("[^\\d.]", "")));
-        product.setProductTitle(productTitle.getText());
+        product.setTitle(productTitle.getText());
         return product;
     }
 
