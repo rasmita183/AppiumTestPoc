@@ -4,7 +4,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import model.Product;
+import com.ama.model.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -12,14 +12,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-public class ProductPage extends BasePage{
+public class ProductPage extends BasePage {
 
     private static final Logger logger = LogManager.getLogger(ProductPage.class);
 
-    @AndroidFindBy(xpath = "//android.webkit.WebView//android.view.View[contains(text(), '65 inch')]")
+    @AndroidFindBy(id = "titleExpanderContent")
     private WebElement productTitle;
 
-    @AndroidFindBy(xpath = "//android.webkit.WebView//android.widget.EditText[contains(text(), 'rupee')]")
+    @AndroidFindBy(xpath = "//android.webkit.WebView//android.widget.EditText[contains(text(), 'rupees')]")
     private WebElement price;
 
     @AndroidFindBy(className = "android.webkit.WebView")
@@ -34,22 +34,14 @@ public class ProductPage extends BasePage{
     }
 
     /**
-     *
      * @return Product details with title and price
      */
     public Product getSelectedProductDetails() {
-        logger.info(productsDetails.getText());
+        logger.info(getTextValue(productsDetails));
         Product product = new Product();
-        product.setAmount(Integer.parseInt(price.getText().replaceAll("[^\\d.]", "")));
+        product.setPrice(Integer.parseInt(getTextValue(price).replaceAll("[^\\d.]", "")));
         product.setTitle(productTitle.getText());
         return product;
-    }
-
-    /**
-     * Adds the product to cart
-     */
-    public void addToCart() {
-        addToCart.click();
     }
 
 

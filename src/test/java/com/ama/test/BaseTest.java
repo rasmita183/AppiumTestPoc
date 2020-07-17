@@ -1,46 +1,36 @@
 package com.ama.test;
 
-import com.ama.pages.ConfirmationPopup;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.ama.utils.PropertiesConstant;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static com.ama.utils.PropertiesReader.properties;
+
 public class BaseTest {
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
 
-    ExtentSparkReporter htmlreport;
-    ExtentReports extentReports;
-
-    AndroidDriver<MobileElement> driver;
-
-    @BeforeSuite
-    public void reportSetup(){
-        htmlreport = new ExtentSparkReporter("test-reports/extent.html");
-        extentReports= new ExtentReports();
-        extentReports.attachReporter(htmlreport);
-    }
+    protected AndroidDriver<MobileElement> driver;
 
     @BeforeClass
     public void setUp() {
         try {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.APP, "/Users/rasmi/Downloads/Amazon_shopping.apk");
-        capabilities.setCapability(MobileCapabilityType.UDID, "8ADY0JDW1");
-            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(MobileCapabilityType.APP, properties.getProperty(PropertiesConstant.APP_PATH));
+            capabilities.setCapability(MobileCapabilityType.UDID, properties.getProperty(PropertiesConstant.DEVICE_ID));
+            String url = "http://" + properties.getProperty(PropertiesConstant.HOST) + ":"
+                    + properties.getProperty(PropertiesConstant.PORT) + "/wd/hub";
+            driver = new AndroidDriver<>(new URL(url), capabilities);
             logger.info("Driver created");
-//            driver.installApp("/Users/rasmi/Downloads/Amazon_shopping.apk");
             driver.launchApp();
             logger.info("App launched");
         } catch (MalformedURLException e) {
@@ -48,13 +38,16 @@ public class BaseTest {
         }
     }
 
+    /**
+     * Get the current driver
+     * @return current driver
+     */
+    public WebDriver getDriver() {
+        return this.driver;
+    }
+
     @AfterClass
     public void tearDown() {
         driver.quit();
-    }
-
-    @AfterSuite
-    public void reportTearDown(){
-        extentReports.flush();
     }
 }

@@ -1,5 +1,6 @@
 package com.ama.pages;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -9,37 +10,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
-import java.util.Set;
 
 
-public class InitPage extends BasePage{
+public class InitPage extends BasePage {
 
     private static final Logger logger = LogManager.getLogger(InitPage.class);
-//    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Skip sign in\")")
     @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/skip_sign_in_button")
     private WebElement skipSignIn;
-
     @AndroidFindBy(id = "com.amazon.mShop.android.shopping:id/sign_in_button")
     private WebElement alreadyMember;
 
-    public InitPage(AndroidDriver driver) {
+    public InitPage(AndroidDriver<MobileElement> driver) {
         super(driver);
         PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)), this);
     }
 
+    /**
+     * Skips sign in process
+     */
     public void skipSignIn() {
-        skipSignIn.click();
-    }
-    public void selectAlreadyMember() {
-        alreadyMember.click();
-        Set<String> contexts = driver.getContextHandles();
-        for (String context : contexts) {
-            logger.info(contexts);
-            if (!context.equals("NATIVE_APP")) {
-                driver.context(context);
-                break;
-            }
-        }
+        clickAnElement(skipSignIn);
     }
 
 }

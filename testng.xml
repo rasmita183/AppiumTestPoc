@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Appium test suite">
+    <listeners>
+        <listener class-name="com.ama.reporting.TestListener"/>
+    </listeners>
     <test name="Sample Test" verbose="1">
         <classes>
-            <class name="com.ama.test.ShoppingTest" />
+            <class name="com.ama.test.ShopAndBrowseTest"/>
         </classes>
     </test>
 </suite>
