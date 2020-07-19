@@ -149,7 +149,6 @@ public class TestListener implements ITestListener {
     public void addScreenshot(ITestResult result) {
         try {
             ExtentTestManager.getTest().info("Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Image(result)).build());
-            ;
         } catch (IOException e) {
             throw new RuntimeException("An exception occured while capturing screenshot from base 64" + e.getMessage());
         }
