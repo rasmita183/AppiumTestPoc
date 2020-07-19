@@ -3,6 +3,7 @@ package com.amazon.reporting;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +49,6 @@ public class ExtentTestManager {
     }
 
     /**
-     *
      * @param Pass check the report pass info
      */
     public static void reportPass(String Pass) {

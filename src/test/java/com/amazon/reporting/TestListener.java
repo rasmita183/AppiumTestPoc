@@ -3,7 +3,6 @@ package com.amazon.reporting;
 import com.amazon.test.BaseTest;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.Status;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +14,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -143,11 +143,13 @@ public class TestListener implements ITestListener {
 
     /**
      * Add screenshot to the test result
+     *
      * @param result ITestResult of the test to add screenshot
      */
     public void addScreenshot(ITestResult result) {
         try {
-            ExtentTestManager.getTest().info("Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Image(result)).build());;
+            ExtentTestManager.getTest().info("Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Image(result)).build());
+            ;
         } catch (IOException e) {
             throw new RuntimeException("An exception occured while capturing screenshot from base 64" + e.getMessage());
         }

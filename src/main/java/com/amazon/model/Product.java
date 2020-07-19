@@ -7,6 +7,7 @@ public class Product {
 
     /**
      * Get title of the product
+     *
      * @return title of the product
      */
     public String getTitle() {
@@ -15,6 +16,7 @@ public class Product {
 
     /**
      * Set title of the product
+     *
      * @param title title of the product
      */
     public void setTitle(String title) {
@@ -23,6 +25,7 @@ public class Product {
 
     /**
      * Get price of the product
+     *
      * @return price of the product
      */
     public Integer getPrice() {
@@ -31,6 +34,7 @@ public class Product {
 
     /**
      * Set price of the product
+     *
      * @param price price of the product
      */
     public void setPrice(Integer price) {

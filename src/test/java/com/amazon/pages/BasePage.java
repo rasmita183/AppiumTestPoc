@@ -79,7 +79,6 @@ public abstract class BasePage {
     }
 
     /**
-     *
      * @param element element to check visibility
      * @return true is element is displayed
      */
@@ -89,6 +88,7 @@ public abstract class BasePage {
 
     /**
      * Finds an element
+     *
      * @param by
      * @return element
      */

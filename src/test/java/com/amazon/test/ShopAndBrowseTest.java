@@ -1,13 +1,18 @@
 package com.amazon.test;
 
-import com.amazon.pages.*;
+import com.amazon.model.Product;
+import com.amazon.pages.HomePage;
+import com.amazon.pages.LoginPage;
+import com.amazon.pages.ProductPage;
+import com.amazon.pages.SearchPage;
 import com.amazon.reporting.ExtentTestManager;
 import com.amazon.utils.PropertiesConstant;
-import com.amazon.model.Product;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static com.amazon.utils.PropertiesReader.properties;
+
 import java.util.Random;
+
+import static com.amazon.utils.PropertiesReader.properties;
 
 public class ShopAndBrowseTest extends BaseTest {
     LoginPage loginPage;

@@ -7,7 +7,9 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.File;
+
 import static com.amazon.utils.PropertiesReader.properties;
 
 public class ExtentManager {
@@ -21,6 +23,7 @@ public class ExtentManager {
 
     /**
      * Gets a instance of extent report
+     *
      * @return instance of extent report
      */
     public static ExtentReports getInstance() {
@@ -31,6 +34,7 @@ public class ExtentManager {
 
     /**
      * Create an instance of Extent report
+     *
      * @return extent report instance
      */
     public static ExtentReports createInstance() {
@@ -53,6 +57,7 @@ public class ExtentManager {
 
     /**
      * Creates report directory and returns the path
+     *
      * @param path - report directory path
      * @return report directory path
      */

@@ -21,6 +21,7 @@ public class HomePage extends BasePage {
 
     /**
      * Validate home page is displaying
+     *
      * @return true if home is displayed
      */
     public boolean validateIsHomePage() {
@@ -29,6 +30,7 @@ public class HomePage extends BasePage {
 
     /**
      * Searching an Item in the search box
+     *
      * @param searchText Item to be searched
      */
     public void searchItem(String searchText) {

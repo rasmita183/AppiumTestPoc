@@ -1,10 +1,10 @@
 package com.amazon.pages;
 
+import com.amazon.model.Product;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import com.amazon.model.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -64,6 +64,7 @@ public class ProductPage extends BasePage {
 
     /**
      * check if proceed to buy is displayed
+     *
      * @return true if proceed to buy is displayed
      */
 
