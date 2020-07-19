@@ -1,9 +1,8 @@
 package com.ama.pages;
 
+import com.ama.reporting.ExtentTestManager;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
@@ -25,7 +24,8 @@ public class HomePage extends BasePage {
      * Validate home page is displaying
      * @return true if home is displayed
      */
-    public boolean isHomePage() {
+    public boolean validateIsHomePage() {
+
         return searchTextField.isDisplayed();
     }
 
@@ -35,8 +35,11 @@ public class HomePage extends BasePage {
      */
     public void searchItem(String searchText) {
         waitForElementToBeVisible(searchTextField);
+        ExtentTestManager.reportInfo("Wait For element to be present");
         clickAnElement(searchTextField);
+        ExtentTestManager.reportInfo(("Click element on search page"));
         enterText(searchTextField, searchText);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        ExtentTestManager.reportInfo("Searching for product");
+        pressEnter();
     }
 }

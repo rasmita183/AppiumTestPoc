@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
 
+/**
+ *  This class is used to read the config properties file
+ */
+
 public class PropertiesReader {
     public static Properties properties;
     static {

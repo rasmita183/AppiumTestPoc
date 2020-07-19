@@ -14,7 +14,6 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,35 +22,57 @@ import java.io.IOException;
 public class TestListener implements ITestListener {
     private static final Logger logger = LogManager.getLogger(TestListener.class);
 
+    /**
+     * This method is invoked before any test method gets executed
+     */
     public void onStart(ITestContext context) {
+
         logger.info("*** Test Suite " + context.getName() + " started ***");
     }
 
+    /**
+     * This method is invoked after all tests methods gets executed.
+     */
     public void onFinish(ITestContext context) {
         logger.info(("*** Test Suite " + context.getName() + " ending ***"));
         ExtentTestManager.endTest();
         ExtentManager.getInstance().flush();
     }
 
+    /**
+     * This method is invoked before any tests method is invoked
+     *
+     * @param result particular test method has been started.
+     */
+
     public void onTestStart(ITestResult result) {
         logger.info(("*** Running test method " + result.getMethod().getMethodName() + "..."));
         ExtentTestManager.startTest(result.getMethod().getDescription());
     }
 
+    /**
+     * This method is invoked when any test method gets succeeded
+     *
+     * @param result indicate that the particular test method has successfully finished its execution
+     */
+
     public void onTestSuccess(ITestResult result) {
         logger.info("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
-        ExtentTestManager.getTest().log(Status.PASS, "Test passed");
+        ExtentTestManager.getTest().log(Status.PASS, "Test Passed");
     }
+
+    /**
+     * his method is invoked when any test method gets failed
+     *
+     * @param result indicate that the particular test method has been failed
+     */
 
     public void onTestFailure(ITestResult result) {
         ExtentTest extentTest = ExtentTestManager.getTest();
         logger.info("*** Test execution " + result.getMethod().getMethodName() + " failed...");
         extentTest.info((result.getMethod().getDescription() + " failed!"));
-
         Object testClass = result.getInstance();
         WebDriver driver = ((BaseTest) testClass).getDriver();
-        ;
-
         String targetLocation = null;
         String testClassName = result.getInstanceName();
         String timeStamp = String.valueOf(System.currentTimeMillis());
@@ -92,10 +113,20 @@ public class TestListener implements ITestListener {
         ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
     }
 
+    /**
+     * This method is invoked when each test method is skipped
+     *
+     * @param result ndicate that the particular test method has been skipped
+     */
+
     public void onTestSkipped(ITestResult result) {
         logger.info("*** Test " + result.getMethod().getMethodName() + " skipped...");
         ExtentTestManager.getTest().log(Status.SKIP, "Test Skipped");
     }
+
+    /**
+     * This method is invoked each time the test method fails but is within the success percentage mentioned
+     */
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         logger.info("*** Test failed but within percentage % " + result.getMethod().getMethodName());

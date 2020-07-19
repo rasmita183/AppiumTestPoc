@@ -7,9 +7,7 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.File;
-
 import static com.ama.utils.PropertiesReader.properties;
 
 public class ExtentManager {

@@ -8,4 +8,6 @@ public interface PropertiesConstant {
     String ITEMS_TO_SEARCH = "ITEMS_TO_SEARCH";
     String HOST = "HOST";
     String PORT = "PORT";
+    String USER_NAME = "USER_NAME";
+    String PASS_WORD = "PASS_WORD";
 }

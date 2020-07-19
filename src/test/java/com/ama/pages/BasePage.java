@@ -3,7 +3,10 @@ package com.ama.pages;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -50,6 +53,27 @@ public abstract class BasePage {
     public void enterText(WebElement element, String text) {
         element.sendKeys(text);
     }
+    /**
+     * @param text scroll to the text
+     */
+    public void scrollToText(String text){
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(" + text + "));");
+    }
 
+    /**
+     * this method is used to press enter
+     */
+    public void pressEnter() {
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    /**
+     *
+     * @param element validate the element is present
+     */
+
+    public void validateElementIsDisplayed(WebElement element){
+        element.isDisplayed();
+    }
 
 }

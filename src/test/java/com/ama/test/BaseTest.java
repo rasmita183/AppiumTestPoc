@@ -10,10 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import static com.ama.utils.PropertiesReader.properties;
 
 public class BaseTest {
@@ -21,6 +19,9 @@ public class BaseTest {
 
     protected AndroidDriver<MobileElement> driver;
 
+    /**
+     * This method is used to  starting the server , appium driver
+     */
     @BeforeClass
     public void setUp() {
         try {
@@ -40,12 +41,16 @@ public class BaseTest {
 
     /**
      * Get the current driver
+     *
      * @return current driver
      */
     public WebDriver getDriver() {
         return this.driver;
     }
 
+    /**
+     * This method is used to stop the server and close the driver
+     */
     @AfterClass
     public void tearDown() {
         driver.quit();

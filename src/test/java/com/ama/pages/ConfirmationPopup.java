@@ -1,5 +1,6 @@
 package com.ama.pages;
 
+import com.ama.reporting.ExtentTestManager;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -23,6 +24,8 @@ public class ConfirmationPopup extends BasePage {
      * Selects one time
      */
     public void useOneTime() {
+
         clickAnElement(oneTime);
+        ExtentTestManager.reportInfo("Click use one time");
     }
 }
