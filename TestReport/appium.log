@@ -1,6 +1,0 @@
-2020-07-17 12:31:37.240 [main] INFO  com.ama.reporting.TestListener - *** Test Suite Sample Test started ***
-2020-07-17 12:31:37.314 [main] INFO  com.ama.test.BaseTest - Driver created
-2020-07-17 12:31:37.334 [main] INFO  com.ama.reporting.TestListener - *** Running test method testLogin...
-2020-07-17 12:31:37.345 [main] INFO  com.ama.reporting.ExtentManager - Directory: /Users/rasmi/Downloads/appium-sample/TestReport is created!
-2020-07-17 12:31:37.828 [main] INFO  com.ama.reporting.TestListener - *** Executed testLogin test successfully...
-2020-07-17 12:31:37.884 [main] INFO  com.ama.reporting.TestListener - *** Test Suite Sample Test ending ***
